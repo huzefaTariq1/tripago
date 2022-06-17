@@ -1,0 +1,16 @@
+{
+    "trips":[
+        {
+            "title":"2 days stays in Murree",
+            "price":"Rs 5000"
+        },
+        {
+            "title":"2 days stays in Abbottababd",
+            "price":"Rs 3000"
+        },
+        {
+            "title":"2 days stays in Hunza",
+            "price":"Rs 7000"
+        }
+    ]
+}
