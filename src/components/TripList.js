@@ -5,19 +5,23 @@ import { useFetch } from '../hooks/useFetch'
 
 const TripList = () => {
    const [url,setUrl]=useState("http://localhost:3000/trips")
-   const {data:trips}=useFetch(url)
+   const {data:trips ,ispending ,error}=useFetch(url)
    
   return (
     <div>
  <h1>Trip List</h1>
  
+  {ispending && <div>Loading...</div>}
+
+  {error && <div>could not fetch data</div>}
+
   {/* using and operator bcz in usefetch data initlize with null and map can't run on null  */}
    {trips && trips.map((trip,index)=>{
      return(
       <center key={index}>
         <div className='box'>
-            <h1> {trip.title}</h1>
-            <h2>{trip.price}</h2>
+            <h2> {trip.title}</h2>
+            <p>{trip.price}</p>
         </div>
         </center>
      )
