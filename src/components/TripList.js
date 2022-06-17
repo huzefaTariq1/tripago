@@ -1,35 +1,18 @@
 import React from 'react'
-import { useState, useEffect,useCallback} from 'react'
+import { useState} from 'react'
 import './tripList.css'
+import { useFetch } from '../hooks/useFetch'
 
 const TripList = () => {
-   const [trips,setTrips]=useState([]);
    const [url,setUrl]=useState("http://localhost:3000/trips")
-
+   const {data:trips}=useFetch(url)
    
-
-
-
-  const fetchTrips= useCallback( async ()=>{
-    const respone= await fetch(url)
-    const json= await respone.json()
-    setTrips(json)
-  },[url])
-
-
-
-useEffect(()=>{
- fetchTrips()
-},[fetchTrips])
-
-
-
-
-   console.log(trips)
   return (
     <div>
  <h1>Trip List</h1>
-   {trips.map((trip,index)=>{
+ 
+  {/* using and operator bcz in usefetch data initlize with null and map can't run on null  */}
+   {trips && trips.map((trip,index)=>{
      return(
       <center key={index}>
         <div className='box'>
